@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Something went wrong — Error</title>
+    <style>
+        :root{
+          --bg:#0f1724;
+          --card:#0b1220;
+          --muted:#9aa7bf;
+          --accent:#7dd3fc;
+          --accent-2:#60a5fa;
+          --glass: rgba(255,255,255,0.04);
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+          margin:0;
+          font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+          background: linear-gradient(180deg,var(--bg),#081022 60%);
+          color:#e6eef8;
+          -webkit-font-smoothing:antialiased;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          padding:24px;
+        }
+        .card{
+          width:100%;
+          max-width:980px;
+          background: linear-gradient(180deg,var(--card), rgba(11,18,32,0.7));
+          border-radius:14px;
+          padding:36px;
+          box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+          display:grid;
+          grid-template-columns: 1fr 360px;
+          gap:28px;
+          align-items:center;
+        }
+        .left{
+          padding-right:8px;
+        }
+        .code{
+          font-size:96px;
+          font-weight:700;
+          line-height:1;
+          letter-spacing:-2px;
+          color:var(--accent);
+          margin:0 0 8px 0;
+          text-shadow: 0 6px 30px rgba(96,165,250,0.12);
+        }
+        .title{
+          font-size:20px;
+          margin:0 0 10px 0;
+          color:#eaf6ff;
+        }
+        .desc{
+          color:var(--muted);
+          margin:0 0 18px 0;
+          line-height:1.5;
+          max-width:56ch;
+        }
+        .actions{display:flex;gap:12px;flex-wrap:wrap}
+        .btn{
+          appearance:none;
+          border:0;
+          padding:10px 16px;
+          border-radius:10px;
+          font-weight:600;
+          cursor:pointer;
+          background:linear-gradient(90deg,var(--accent),var(--accent-2));
+          color:#022047;
+          box-shadow: 0 6px 18px rgba(96,165,250,0.12);
+          text-decoration:none;
+        }
+        .btn.secondary{
+          background:transparent;
+          border:1px solid rgba(255,255,255,0.06);
+          color:var(--muted);
+          box-shadow:none;
+        }
+        .meta{font-size:13px;color:var(--muted);margin-top:12px}
+        .illustration{
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          height:220px;
+          border-radius:10px;
+          background: linear-gradient(180deg, rgba(125,211,252,0.06), rgba(96,165,250,0.03));
+          box-shadow: inset 0 -8px 30px rgba(2,6,23,0.6);
+          padding:18px;
+        }
+        .planet{width:100%;height:100%;display:grid;place-items:center}
+        svg{max-width:95%;max-height:95%}
+        footer{font-size:12px;color:var(--muted);margin-top:18px}
+        @media (max-width:880px){
+          .card{grid-template-columns:1fr;}
+          .illustration{height:180px}
+          .code{font-size:72px}
+        }
+    </style>
+</head>
+<body>
+<main class="card" role="main" aria-labelledby="error-title">
+    <section class="left">
+        <h1 class="code" aria-hidden="true">404</h1>
+        <h2 class="title" id="error-title">Page not found</h2>
+        <p class="desc">The page you're looking for doesn't exist or has been moved. If you typed the URL directly, please check the spelling. If you think this is an error, contact support.</p>
+
+        <div class="actions" role="group" aria-label="Error actions">
+            <a class="btn" href="/" title="Go to homepage">Go to homepage</a>
+            <a class="btn secondary" href="/contact" title="Contact support">Contact support</a>
+            <button class="btn secondary" onclick="window.location.reload();" title="Retry">Retry</button>
+        </div>
+
+        <div class="meta" aria-live="polite">Error code: <strong>404</strong> · Requested at <time id="ts"></time></div>
+        <footer>Trace ID: <span id="trace">—</span></footer>
+    </section>
+
+    <aside class="illustration" aria-hidden="true">
+        <div class="planet">
+            <!-- simple SVG illustration -->
+            <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Broken compass illustration">
+                <defs>
+                    <linearGradient id="g1" x1="0" x2="1">
+                        <stop offset="0" stop-color="#7dd3fc" stop-opacity="0.9"/>
+                        <stop offset="1" stop-color="#60a5fa" stop-opacity="0.9"/>
+                    </linearGradient>
+                </defs>
+                <rect x="8" y="8" width="224" height="144" rx="10" fill="url(#g1)" opacity="0.08"/>
+                <g transform="translate(24,16)">
+                    <circle cx="64" cy="52" r="44" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)"/>
+                    <path d="M64 24 L80 68 L48 56 L64 24 Z" fill="#eaf6ff" opacity="0.92" transform="rotate(-12 64 52)"/>
+                    <circle cx="64" cy="52" r="6" fill="#022047"/>
+                    <g transform="translate(120,12) scale(0.9)">
+                        <rect x="0" y="0" width="60" height="36" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)"/>
+                        <circle cx="12" cy="18" r="6" fill="rgba(255,255,255,0.04)"/>
+                        <rect x="28" y="8" width="22" height="4" rx="2" fill="rgba(255,255,255,0.06)"/>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </aside>
+</main>
+
+<script>
+    // insert timestamp and a pseudo trace id for debugging when served
+    (function(){
+      const t = new Date();
+      document.getElementById('ts').textContent = t.toLocaleString();
+      document.getElementById('trace').textContent = (Math.random().toString(36).slice(2,10)).toUpperCase();
+
+      // If you want to customize for different error codes, server can replace the following placeholders
+      // Example: replace innerText of .code, .title, .desc, and meta/error code before sending the page.
+    })();
+</script>
+</body>
+</html>
